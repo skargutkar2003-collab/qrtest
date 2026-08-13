@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting to App Store...</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: #007aff;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+    <script>
+        window.onload = function() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            
+            // REPLACE THESE LINKS WITH YOUR ACTUAL STORE DESTINATIONS
+            var iosLink = "https://apps.apple.com/us/app/subway-surfers/id512939461";
+            var androidLink = "https://play.google.com/store/apps/details?id=com.kiloo.subwaysurf&hl=en_IN";
+            var fallbackLink = "https://yourwebsite.com"; // For desktop or unidentifiable devices
+
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = iosLink;
+            } else if (/android/i.test(userAgent)) {
+                window.location.href = androidLink;
+            } else {
+                window.location.href = fallbackLink;
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="spinner"></div>
+        <p>Redirecting you to the appropriate app store...</p>
+        <p style="font-size: 14px; color: #777;">If you are not redirected automatically, <a href="https://yourwebsite.com">click here</a>.</p>
+    </div>
+</body>
+</html>
